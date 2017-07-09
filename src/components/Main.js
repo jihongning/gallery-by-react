@@ -5,27 +5,17 @@ import React from 'react';
 
 // let yeomanImage = require('../images/yeoman.png');
 //获取图片相关的数据
-var imageDatas=require("../data/imageDatas.json");
-
-// function genImageURL(imageDatasArr){
-// 	for(let i=0,j=imageDatasArr.length;i<j;i++){
-// 		var singleImageDate=imageDatasArr[i];
-//         singleImageDate.imageURL=require('../images/'+singleImageDate.fileName);
-//         imageDatasArr[i]=singleImageDate;
-// 	}
-// 	return imageDatasArr;
-// }
-// imageDatas=genImageURL(imageDatas);
+let imageDatas=require("../data/imageDatas.json");
 //利用自执行函数，将图片信息转成图片的URL路径信息
-imageDatas=(function genImageURL(imageDatasArr){
+function genImageURL(imageDatasArr){
 	for(let i=0,j=imageDatasArr.length;i<j;i++){
 		var singleImageDate=imageDatasArr[i];
         singleImageDate.imageURL=require('../images/'+singleImageDate.fileName);
         imageDatasArr[i]=singleImageDate;
 	}
 	return imageDatasArr;
-})(imageDatas);
-
+}
+imageDatas=genImageURL(imageDatas);
 
 class AppComponent extends React.Component {
   render() {
